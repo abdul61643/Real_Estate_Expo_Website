@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function Login() {
 
@@ -9,6 +10,8 @@ export default function Login() {
         username: "",
         password: "",
     });
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e) => {
 
@@ -21,7 +24,6 @@ export default function Login() {
 
     const handleLogin = () => {
 
-        // Simple Admin Login
         if (
             form.username === "dgate" &&
             form.password === "dgate123"
@@ -41,66 +43,71 @@ export default function Login() {
 
     return (
 
-        <div
-            style={{
-                height: "100vh",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                background: "#f5f5f5",
-            }}
-        >
+        <div className="login-page">
 
-            <div
-                style={{
-                    background: "#fff",
-                    padding: "40px",
-                    borderRadius: "10px",
-                    width: "350px",
-                }}
-            >
+            <div className="login-card">
 
-                <h2>Admin Login</h2>
+                <div className="login-header">
 
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    value={form.username}
-                    onChange={handleChange}
-                    style={{
-                        width: "100%",
-                        padding: "12px",
-                        marginTop: "20px",
-                    }}
-                />
+                    <div className="logo-circle">
+                        D
+                    </div>
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={form.password}
-                    onChange={handleChange}
-                    style={{
-                        width: "100%",
-                        padding: "12px",
-                        marginTop: "15px",
-                    }}
-                />
+                    <h1>Admin Login</h1>
+
+                    <p>
+                        Sign in to continue to dashboard
+                    </p>
+
+                </div>
+
+                <div className="input-group">
+
+                    <label>
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Enter username"
+                        value={form.username}
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <div className="input-group">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <div className="password-box">
+
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            placeholder="Enter password"
+                            value={form.password}
+                            onChange={handleChange}
+                        />
+
+                        <span
+                            onClick={() =>
+                                setShowPassword(!showPassword)
+                            }
+                        >
+                            {showPassword ? "Hide" : "Show"}
+                        </span>
+
+                    </div>
+
+                </div>
 
                 <button
+                    className="login-btn"
                     onClick={handleLogin}
-                    style={{
-                        width: "100%",
-                        padding: "12px",
-                        marginTop: "20px",
-                        background: "#111",
-                        color: "#fff",
-                        border: "none",
-                        borderRadius: "10px",
-                        cursor: "pointer",
-                        fontSize: "16px",
-                    }}
                 >
                     Login
                 </button>
@@ -108,5 +115,6 @@ export default function Login() {
             </div>
 
         </div>
+
     );
 }

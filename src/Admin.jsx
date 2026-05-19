@@ -100,6 +100,7 @@ export default function Admin() {
                 >
 
                     <tr>
+                        <th>ID</th>
 
                         <th>First Name</th>
 
@@ -118,6 +119,8 @@ export default function Admin() {
                     {visitors.map((item, index) => (
 
                         <tr key={index}>
+
+                            <td>{item.id}</td>
 
                             <td>{item.first_name}</td>
 

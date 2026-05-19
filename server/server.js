@@ -70,15 +70,7 @@ app.post("/register", (req, res) => {
 
 app.get("/visitors", (req, res) => {
 
-    const sql = `
-    SELECT
-      first_name,
-      last_name,
-      email,
-      phone
-    FROM visitors
-    ORDER BY id DESC
-  `;
+    const sql = "SELECT * FROM visitors";
 
     db.query(sql, (err, result) => {
 
