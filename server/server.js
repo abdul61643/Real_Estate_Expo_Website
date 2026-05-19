@@ -42,6 +42,12 @@ app.post("/register", (req, res) => {
         VALUES (?, ?, ?, ?)
     `;
 
+    console.log("Before Query");
+
+
+
+    console.log("After Query");
+
     db.query(
         sql,
         [first_name, last_name, email, phone],
@@ -58,8 +64,13 @@ app.post("/register", (req, res) => {
             }
 
             res.json({
+                success: true,
                 message: "Registration Successful"
             });
+
+            /* res.json({
+                message: "Registration Successful"
+            }); */
         }
     );
 });
@@ -70,7 +81,51 @@ app.post("/register", (req, res) => {
 
 app.get("/visitors", (req, res) => {
 
+    const { date } = req.query;
+
+    let sql = `
+        SELECT *
+        FROM visitors
+    `;
+
+    let values = [];
+
+    // If date selected
+    if (date) {
+
+        sql += `
+            WHERE DATE(
+    CONVERT_TZ(created_at, '+00:00', '+05:30')
+) = ?
+        `;
+
+        values.push(date);
+    }
+
+    sql += `
+        ORDER BY id DESC
+    `;
+
+    db.query(sql, values, (err, result) => {
+
+        if (err) {
+            console.log(err);
+
+            return res.status(500).json({
+                success: false,
+                message: "Database error"
+            });
+        }
+
+        res.json(result);
+    });
+});
+
+
+/* app.get("/visitors", (req, res) => {
+
     const sql = "SELECT * FROM visitors";
+
 
     db.query(sql, (err, result) => {
 
@@ -81,7 +136,7 @@ app.get("/visitors", (req, res) => {
 
         res.json(result);
     });
-});
+}); */
 
 /* =========================
    SERVER

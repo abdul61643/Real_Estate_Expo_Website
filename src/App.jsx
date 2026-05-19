@@ -939,7 +939,7 @@ function RegistrationModal({ onClose }) {
 
       console.log(response.data);
 
-      alert(response.data.message);
+      alert("Registration Successful");
 
       setStep("success");
 
