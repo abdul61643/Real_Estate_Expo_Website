@@ -1,0 +1,76 @@
+@media (max-width: 426px) {
+    
+    #root{
+        border: none;
+        width: 100%;
+    }
+
+    section#Home{
+        padding: 100px 16px 30px !important;
+    }
+
+    .section{
+        padding: 30px 16px !important;
+    }
+
+    .about-grid{
+        margin-top: 5px !important;
+    }
+    .contact-info{
+        overflow: hidden;
+    }
+    .section-about{
+        gap: 20px;
+    }
+
+    .social-links{
+        gap: 8px !important;
+        flex-wrap: wrap;
+    }
+
+    .social-links a{
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .modal-box{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+  }
+
+  .reg-form-wrap{
+    padding: 16px !important;
+  }
+
+  .form-row{
+    grid-template-columns: 1fr !important;
+  }
+
+  .reg-choice-wrap{
+    grid-template-columns: 1fr !important;
+  }
+
+  .modal-title{
+    font-size: 1.6rem !important;
+    text-align: center;
+  }
+
+  .modal-subtitle{
+    text-align: center;
+  }
+
+  .btn-primary,
+  .btn-outline{
+    width: 100%;
+  }
+
+  .reg-actions{
+    flex-direction: column;
+  }
+
+    
+
+
+}
+  
